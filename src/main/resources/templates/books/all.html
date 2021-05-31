@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Libritos</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-</head>
+<head th:replace="fragments/head"></head>
 <body>
 <header th:replace="fragments/header"></header>
 <section class="container">
@@ -17,34 +13,19 @@
             <th scope="col">Author</th>
             <th scope="col">Category</th>
         </tr>
-
         </thead>
         <tbody>
-            <td>
-                <p
-                    th:each="book: ${books}"
-                    th:text="${book.id}" ></p>
-            </td>
-            <td>
-                <p
-                    th:each="book: ${books}"
-                    th:text="${book.title}"></p>
-            </td>
-            <td>
-                <p
-                    th:each="book: ${books}"
-                    th:text="${book.author}"></p>
-            </td>
-            <td>
-                <p
-                    th:each="book: ${books}"
-                    th:text="${book.category}"></p>
-            </td>
+        <tr th:each="book: ${books}">
+            <th scope="row" th:text="${book.id}"></th>
+            <td th:text="${book.title}"></td>
+            <td th:text="${book.author}"></td>
+            <td th:text="${book.category}"></td>
+        </tr>
+
         </tbody>
     </table>
 </section>
 <footer th:replace="fragments/footer"></footer>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 </body>
 </html>

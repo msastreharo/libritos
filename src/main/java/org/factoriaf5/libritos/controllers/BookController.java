@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -25,5 +26,17 @@ public class BookController {
         model.addAttribute("title", "Book list");
         model.addAttribute("books", books);
         return "books/all";
+    }
+
+    @GetMapping("/books/new")
+    String getForm(Model model) {
+        Book book = new Book();
+        model.addAttribute("book", book);
+        return "books/new";
+    }
+
+    @PostMapping ("/books")
+    public void addBooks(Book book) {
+        bookService.save(book);
     }
 }
