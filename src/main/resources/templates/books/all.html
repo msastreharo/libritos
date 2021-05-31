@@ -9,16 +9,37 @@
 <header th:replace="fragments/header"></header>
 <section class="container">
     <h1 th:text="${title}"></h1>
-    <table>
+    <table class="table">
         <thead>
         <tr>
-            <th>Id</th>
-            <th>Title</th>
-            <th>Author</th>
-            <th>Category</th>
+            <th scope="col">Id</th>
+            <th scope="col">Title</th>
+            <th scope="col">Author</th>
+            <th scope="col">Category</th>
         </tr>
+
         </thead>
         <tbody>
+            <td>
+                <p
+                    th:each="book: ${books}"
+                    th:text="${book.id}" ></p>
+            </td>
+            <td>
+                <p
+                    th:each="book: ${books}"
+                    th:text="${book.title}"></p>
+            </td>
+            <td>
+                <p
+                    th:each="book: ${books}"
+                    th:text="${book.author}"></p>
+            </td>
+            <td>
+                <p
+                    th:each="book: ${books}"
+                    th:text="${book.category}"></p>
+            </td>
         </tbody>
     </table>
 </section>
